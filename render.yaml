@@ -31,7 +31,7 @@ services:
     plan: free
     env: python
     buildCommand: "pip install -r requirements.txt"
-    startCommand: "celery flower --app tasks --loglevel info --auth_provider=flower.views.auth.GithubLoginHandler --auth=.*@flower.morris-shaffer.com"
+    startCommand: "celery flower --app tasks --loglevel info --auth_provider=flower.views.auth.GithubLoginHandler --auth=marcchutczer"
     autoDeploy: false
     envVars:
       - key: CELERY_BROKER_URL
