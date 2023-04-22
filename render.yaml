@@ -1,30 +1,30 @@
 services:
-  - type: worker
-    name: queue
-    region: ohio
-    env: python
-    buildCommand: "pip install -r requirements.txt"
-    startCommand: "celery --app tasks worker --loglevel info --concurrency 4 -E"
-    autoDeploy: false
-    envVars:
-      - key: CELERY_BROKER_URL
-        fromService:
-          name: celery-redis
-          type: redis
-          property: connectionString
-  - type: web
-    name: app
-    region: ohio
-    env: python
-    buildCommand: "pip install -r requirements.txt"
-    startCommand: "gunicorn app:app"
-    autoDeploy: false
-    envVars:
-      - key: CELERY_BROKER_URL
-        fromService:
-          name: celery-redis
-          type: redis
-          property: connectionString
+ # - type: worker
+ #   name: queue
+ #   region: ohio
+ #   env: python
+ #   buildCommand: "pip install -r requirements.txt"
+ #   startCommand: "celery --app tasks worker --loglevel info --concurrency 4 -E"
+ #   autoDeploy: false
+ #   envVars:
+ #     - key: CELERY_BROKER_URL
+ #       fromService:
+ #         name: celery-redis
+ #         type: redis
+ #         property: connectionString
+ # - type: web
+ #   name: app
+ #   region: ohio
+ #   env: python
+ #   buildCommand: "pip install -r requirements.txt"
+ #   startCommand: "gunicorn app:app"
+ #   autoDeploy: false
+ #   envVars:
+ #     - key: CELERY_BROKER_URL
+ #       fromService:
+ #         name: celery-redis
+ #         type: redis
+ #         property: connectionString
   - type: web
     name: flower
     region: ohio
